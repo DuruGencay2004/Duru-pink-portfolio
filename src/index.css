@@ -77,31 +77,45 @@
   animation: pulse 2s infinite;
 }
 
-/* ── SCROLL REVEAL ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+/* ── SECTION CENTERING (physical properties, matches original HTML) ── */
+/* Tailwind v4 mx-auto uses margin-inline (logical) which can conflict with
+   the preflight margin:0 reset. This unlayered rule uses physical properties
+   and has higher cascade priority than any @layer rule. */
+section:not(#hero) {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+@layer base {
+  /* ── SCROLL REVEAL ── */
+  /* Placed in @layer base so Tailwind @layer utilities (hover variants) take priority */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-group > * {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .reveal-group.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
+  .reveal-group.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+  .reveal-group.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+  .reveal-group.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
+  .reveal-group.visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
+  .reveal-group.visible > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.55s; }
 }
 
-.reveal-group > * {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-
-.reveal-group.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
-.reveal-group.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
-.reveal-group.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
-.reveal-group.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
-.reveal-group.visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
-.reveal-group.visible > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.55s; }
-
+/* Accessibility: disable motion — unlayered so it always wins */
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-group > * { opacity: 1; transform: none; transition: none; }
 }
