@@ -8,28 +8,28 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
-    number: '001',
-    name: 'RailPredict-AI',
+    number: "001",
+    name: "RailPredict-AI",
     description:
-      'A serverless data pipeline that ingests Belgian rail data in real time, runs delay predictions, and surfaces analytics dashboards — built to scale without servers.',
-    tags: ['Python', 'SQL', 'Analytics', 'Serverless'],
-    link: 'https://github.com/DuruGncy/RailPredict-AI',
+      "A serverless data pipeline that ingests Belgian rail data in real time, runs delay predictions, and surfaces analytics dashboards — built to scale without servers.",
+    tags: ["Python", "SQL", "Analytics", "Serverless"],
+    link: "https://github.com/DuruGncy/RailPredict-AI",
   },
   {
-    number: '002',
-    name: 'DryCleaning Management System',
+    number: "002",
+    name: "DryCleaning Management System",
     description:
-      'An MVP built to digitalize a local dry-cleaning business — order tracking, customer management, and cloud-backed storage replacing handwritten ledgers.',
-    tags: ['Cloud', 'Database', 'Backend'],
-    link: 'https://github.com/DuruGncy/dryclean-management-system',
+      "An MVP built to digitalize a local dry-cleaning business — order tracking, customer management, and cloud-backed storage replacing handwritten ledgers.",
+    tags: ["Cloud", "Database", "Backend"],
+    link: "https://github.com/DuruGncy/dryclean-management-system",
   },
   {
-    number: '003',
-    name: 'Bill Payment System',
+    number: "003",
+    name: "Bill Payment System",
     description:
-      'Microservices architecture with YARP reverse proxy handling routing across payment, user, and notification services. Built for resilience and horizontal scale.',
-    tags: ['.NET 9', 'YARP', 'PostgreSQL', 'REST API'],
-    link: 'https://github.com/DuruGncy/bill-pay-api',
+      "Microservices architecture with YARP reverse proxy handling routing across payment, user, and notification services. Built for resilience and horizontal scale.",
+    tags: [".NET 9", "YARP", "PostgreSQL", "REST API"],
+    link: "https://github.com/DuruGncy/bill-pay-api",
   },
 ];
 
@@ -38,14 +38,15 @@ export default function Projects() {
     <section
       id="projects"
       className="max-w-[1100px] mx-auto px-8 py-20 max-md:px-6 max-md:py-16"
-      style={{ scrollSnapAlign: 'start' }}
+      style={{ scrollSnapAlign: "start" }}
     >
       <span className="reveal block text-[0.65rem] tracking-[0.18em] uppercase text-[#FF1F7A] mb-[0.6rem]">
         // 002 — Projects
       </span>
       <h2
-        className="reveal font-[family-name:var(--font-display)] font-bold text-[#1A0A10] mb-12 leading-[1.15]"
-        style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
+        className="reveal font-[family-name:var(--font-display)] font-bold mb-12 leading-[1.15]"
+        style={{ color: "var(--c-text)" }}
+        style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
       >
         Selected
         <br />
@@ -56,7 +57,11 @@ export default function Projects() {
         {PROJECTS.map((project) => (
           <div
             key={project.number}
-            className="project-card bg-white border border-[#FFB3D4] rounded-[6px] p-[2rem] pt-[2.4rem] relative overflow-hidden transition-[transform,box-shadow] duration-[280ms] hover:-translate-y-1.5 hover:shadow-[0_16px_48px_rgba(255,31,122,0.1)]"
+            className="project-card rounded-[6px] p-[2rem] pt-[2.4rem] relative overflow-hidden transition-[transform,box-shadow,background,border-color] duration-[280ms] hover:-translate-y-1.5 hover:shadow-[0_16px_48px_rgba(255,31,122,0.1)] border"
+            style={{
+              background: "var(--c-surface)",
+              borderColor: "var(--c-border)",
+            }}
           >
             {/* Big background number */}
             <div
@@ -66,11 +71,17 @@ export default function Projects() {
               {project.number}
             </div>
 
-            <h3 className="font-[family-name:var(--font-display)] text-[1.1rem] font-bold text-[#1A0A10] mb-3 leading-[1.3]">
+            <h3
+              className="font-[family-name:var(--font-display)] text-[1.1rem] font-bold mb-3 leading-[1.3]"
+              style={{ color: "var(--c-text)" }}
+            >
               {project.name}
             </h3>
 
-            <p className="text-[0.75rem] leading-[1.75] text-[#1A0A10] opacity-70 mb-[1.4rem]">
+            <p
+              className="text-[0.75rem] leading-[1.75] opacity-70 mb-[1.4rem]"
+              style={{ color: "var(--c-text)" }}
+            >
               {project.description}
             </p>
 
@@ -78,7 +89,8 @@ export default function Projects() {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[0.6rem] tracking-[0.08em] px-[0.65rem] py-[0.25rem] bg-[rgba(255,179,212,0.2)] rounded-[2px] text-[#E0006F]"
+                  className="text-[0.6rem] tracking-[0.08em] px-[0.65rem] py-[0.25rem] rounded-[2px] text-[#FF1F7A]"
+                  style={{ background: "var(--c-tag-bg)" }}
                 >
                   {tag}
                 </span>

@@ -4,8 +4,9 @@ export default function Hero() {
       id="hero"
       className="relative w-full h-screen overflow-hidden"
       style={{
-        background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,179,212,0.18) 0%, #FFF5F9 68%)',
-        scrollSnapAlign: 'start',
+        background: "var(--c-hero-gradient)",
+        scrollSnapAlign: "start",
+        transition: "background 0.3s ease",
       }}
     >
       {/* Dot grid overlay */}
@@ -13,8 +14,9 @@ export default function Hero() {
         className="absolute inset-0 z-[1] pointer-events-none"
         aria-hidden="true"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(255,179,212,0.22) 1px, transparent 1px)',
-          backgroundSize: '36px 36px',
+          backgroundImage:
+            "radial-gradient(circle, rgba(255,179,212,0.22) 1px, transparent 1px)",
+          backgroundSize: "36px 36px",
         }}
       />
 
@@ -25,10 +27,10 @@ export default function Hero() {
         style={{
           width: 520,
           height: 520,
-          background: 'rgba(255,31,122,0.07)',
+          background: "rgba(255,31,122,0.07)",
           top: -120,
           right: -80,
-          filter: 'blur(90px)',
+          filter: "blur(90px)",
         }}
       />
       <div
@@ -37,17 +39,24 @@ export default function Hero() {
         style={{
           width: 380,
           height: 380,
-          background: 'rgba(255,179,212,0.13)',
+          background: "rgba(255,179,212,0.13)",
           bottom: -60,
           left: -60,
-          filter: 'blur(90px)',
+          filter: "blur(90px)",
         }}
       />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center h-full pointer-events-none">
         {/* Availability badge */}
-        <div className="inline-flex items-center gap-[0.55rem] bg-[rgba(255,245,249,0.82)] border border-[#FFB3D4] rounded-full px-4 py-[0.35rem] text-[0.68rem] tracking-[0.1em] uppercase text-[#1A0A10] mb-[1.6rem] backdrop-blur-[8px]">
+        <div
+          className="inline-flex items-center gap-[0.55rem] border rounded-full px-4 py-[0.35rem] text-[0.68rem] tracking-[0.1em] uppercase mb-[1.6rem] backdrop-blur-[8px]"
+          style={{
+            background: "var(--c-badge-bg)",
+            borderColor: "var(--c-border)",
+            color: "var(--c-text)",
+          }}
+        >
           <div className="pulse-dot w-2 h-2 rounded-full bg-[#FF1F7A]" />
           Available for 2026
         </div>
@@ -59,8 +68,9 @@ export default function Hero() {
 
         {/* Name */}
         <h1
-          className="font-[family-name:var(--font-display)] font-bold leading-none text-[#1A0A10] mb-4"
-          style={{ fontSize: 'clamp(3.8rem, 9vw, 7.8rem)' }}
+          className="font-[family-name:var(--font-display)] font-bold leading-none mb-4"
+          style={{ color: "var(--c-text)" }}
+          style={{ fontSize: "clamp(3.8rem, 9vw, 7.8rem)" }}
         >
           Duru
           <br />
@@ -68,8 +78,12 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-[0.78rem] tracking-[0.08em] text-[#1A0A10] opacity-70 mb-[2.2rem] bg-[rgba(255,245,249,0.55)] px-5 py-[0.4rem] rounded-[4px] backdrop-blur-[6px]">
-          Final-year @ Yaşar University &nbsp;·&nbsp; Erasmus+ &nbsp;·&nbsp; İzmir, Turkey
+        <p
+          className="text-[0.78rem] tracking-[0.08em] opacity-70 mb-[2.2rem] px-5 py-[0.4rem] rounded-[4px] backdrop-blur-[6px]"
+          style={{ color: "var(--c-text)", background: "var(--c-subtitle-bg)" }}
+        >
+          Final-year @ Yaşar University &nbsp;·&nbsp; Erasmus+ &nbsp;·&nbsp;
+          İzmir, Turkey
         </p>
 
         {/* CTA */}
@@ -80,6 +94,16 @@ export default function Hero() {
           View Portfolio →
         </a>
       </div>
+
+      {/* Bottom fade to blend into About section */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-[10]"
+        style={{
+          background: "linear-gradient(to bottom, transparent, var(--c-bg))",
+          transition: "background 0.3s ease",
+        }}
+      />
     </section>
   );
 }

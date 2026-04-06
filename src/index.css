@@ -10,6 +10,37 @@
   --font-mono: "DM Mono", monospace;
 }
 
+/* ── SEMANTIC COLOUR TOKENS ── */
+:root {
+  --c-bg:              #FFF5F9;
+  --c-text:            #1A0A10;
+  --c-surface:         #ffffff;
+  --c-border:          #FFB3D4;
+  --c-border-subtle:   rgba(255,179,212,0.25);
+  --c-border-faint:    rgba(255,179,212,0.30);
+  --c-nav-bg:          rgba(255,245,249,0.72);
+  --c-badge-bg:        rgba(255,245,249,0.82);
+  --c-subtitle-bg:     rgba(255,245,249,0.55);
+  --c-tag-bg:          rgba(255,179,212,0.20);
+  --c-mobile-menu-bg:  #FFF5F9;
+  --c-hero-gradient:   radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,179,212,0.18) 0%, #FFF5F9 68%);
+}
+
+html.dark {
+  --c-bg:              #120A0F;
+  --c-text:            #F0E0E9;
+  --c-surface:         #1E1018;
+  --c-border:          rgba(255,179,212,0.30);
+  --c-border-subtle:   rgba(255,179,212,0.14);
+  --c-border-faint:    rgba(255,179,212,0.14);
+  --c-nav-bg:          rgba(18,10,15,0.88);
+  --c-badge-bg:        rgba(30,16,24,0.85);
+  --c-subtitle-bg:     rgba(30,16,24,0.55);
+  --c-tag-bg:          rgba(255,31,122,0.14);
+  --c-mobile-menu-bg:  #120A0F;
+  --c-hero-gradient:   radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,31,122,0.10) 0%, #120A0F 68%);
+}
+
 @layer base {
   *, *::before, *::after {
     margin: 0;
@@ -24,22 +55,23 @@
   }
 
   body {
-    background-color: #FFF5F9;
-    color: #1A0A10;
+    background-color: var(--c-bg);
+    color: var(--c-text);
     font-family: "DM Mono", monospace;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #FFF5F9; }
+  ::-webkit-scrollbar-track { background: var(--c-bg); }
   ::-webkit-scrollbar-thumb {
     background: #FFB3D4;
     border-radius: 100px;
-    border: 2px solid #FFF5F9;
+    border: 2px solid var(--c-bg);
   }
   ::-webkit-scrollbar-thumb:hover { background: #FF1F7A; }
-  * { scrollbar-width: thin; scrollbar-color: #FFB3D4 #FFF5F9; }
+  * { scrollbar-width: thin; scrollbar-color: #FFB3D4 var(--c-bg); }
 
   /* ── CURSOR ── */
   body {
