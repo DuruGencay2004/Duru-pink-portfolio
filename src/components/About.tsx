@@ -27,8 +27,7 @@ export default function About() {
       </span>
       <h2
         className="reveal font-[family-name:var(--font-display)] font-bold mb-12 leading-[1.15]"
-        style={{ color: "var(--c-text)" }}
-        style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+        style={{ color: "var(--c-text)", fontSize: "clamp(2rem, 4vw, 3rem)" }}
       >
         Code that
         <br />

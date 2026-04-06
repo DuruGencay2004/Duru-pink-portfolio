@@ -69,8 +69,10 @@ export default function Hero() {
         {/* Name */}
         <h1
           className="font-[family-name:var(--font-display)] font-bold leading-none mb-4"
-          style={{ color: "var(--c-text)" }}
-          style={{ fontSize: "clamp(3.8rem, 9vw, 7.8rem)" }}
+          style={{
+            color: "var(--c-text)",
+            fontSize: "clamp(3.8rem, 9vw, 7.8rem)",
+          }}
         >
           Duru
           <br />
