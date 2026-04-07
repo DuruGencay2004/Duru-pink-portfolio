@@ -109,6 +109,19 @@ html.dark {
   animation: pulse 2s infinite;
 }
 
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
 /* ── SECTION CENTERING (physical properties, matches original HTML) ── */
 /* Tailwind v4 mx-auto uses margin-inline (logical) which can conflict with
    the preflight margin:0 reset. This unlayered rule uses physical properties

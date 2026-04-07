@@ -1,4 +1,13 @@
-export default function Hero() {
+import type React from "react";
+
+function heroAnim(delay: number, show: boolean) {
+  return {
+    animation: `hero-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms both`,
+    animationPlayState: show ? "running" : "paused",
+  } as React.CSSProperties;
+}
+
+export default function Hero({ show = false }: { show?: boolean }) {
   return (
     <section
       id="hero"
@@ -55,6 +64,7 @@ export default function Hero() {
             background: "var(--c-badge-bg)",
             borderColor: "var(--c-border)",
             color: "var(--c-text)",
+            ...heroAnim(0, show),
           }}
         >
           <div className="pulse-dot w-2 h-2 rounded-full bg-[#FF1F7A]" />
@@ -62,7 +72,10 @@ export default function Hero() {
         </div>
 
         {/* Eyebrow */}
-        <p className="text-[0.68rem] tracking-[0.22em] uppercase text-[#FF1F7A] mb-[1.4rem] font-[family-name:var(--font-mono)]">
+        <p
+          className="text-[0.68rem] tracking-[0.22em] uppercase text-[#FF1F7A] mb-[1.4rem] font-[family-name:var(--font-mono)]"
+          style={heroAnim(120, show)}
+        >
           Software Engineering &nbsp;·&nbsp; Data Systems &nbsp;·&nbsp; Backend
         </p>
 
@@ -72,6 +85,7 @@ export default function Hero() {
           style={{
             color: "var(--c-text)",
             fontSize: "clamp(3.8rem, 9vw, 7.8rem)",
+            ...heroAnim(240, show),
           }}
         >
           Duru
@@ -82,7 +96,11 @@ export default function Hero() {
         {/* Subtitle */}
         <p
           className="text-[0.78rem] tracking-[0.08em] opacity-70 mb-[2.2rem] px-5 py-[0.4rem] rounded-[4px] backdrop-blur-[6px]"
-          style={{ color: "var(--c-text)", background: "var(--c-subtitle-bg)" }}
+          style={{
+            color: "var(--c-text)",
+            background: "var(--c-subtitle-bg)",
+            ...heroAnim(390, show),
+          }}
         >
           Final-year @ Yaşar University &nbsp;·&nbsp; Erasmus+ &nbsp;·&nbsp;
           İzmir, Turkey
@@ -92,6 +110,7 @@ export default function Hero() {
         <a
           href="#about"
           className="pointer-events-auto inline-flex items-center gap-2 bg-transparent text-[#FF1F7A] border-[1.5px] border-[#FF1F7A] font-[family-name:var(--font-mono)] text-[0.75rem] tracking-[0.1em] uppercase px-8 py-[0.85rem] rounded-[3px] no-underline transition-[background,color,transform] duration-[250ms] hover:bg-[#FF1F7A] hover:text-white hover:-translate-y-0.5"
+          style={heroAnim(530, show)}
         >
           View Portfolio →
         </a>

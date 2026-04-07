@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useDarkMode } from "../hooks/useDarkMode";
 
 interface LoadingScreenProps {
   onComplete?: () => void;
@@ -9,6 +10,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const loaderTextRef = useRef<HTMLDivElement>(null);
   const progressFillRef = useRef<HTMLDivElement>(null);
   const [hidden, setHidden] = useState(false);
+  const [isDark] = useDarkMode();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -232,7 +234,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         position: "fixed",
         inset: 0,
         zIndex: 9999,
-        background: "#FFF5F9",
+        background: isDark ? "#1a0a12" : "#FFF5F9",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -274,7 +276,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           style={{
             fontSize: "11px",
             letterSpacing: "0.3em",
-            color: "#6B2045",
+            color: isDark ? "#FFB3D4" : "#6B2045",
             textTransform: "uppercase",
             marginTop: "10px",
           }}
@@ -290,7 +292,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           transform: "translateX(-50%)",
           width: "120px",
           height: "1.5px",
-          background: "#FFD6E8",
+          background: isDark ? "#4a1025" : "#FFD6E8",
           zIndex: 2,
         }}
       >

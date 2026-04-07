@@ -39,7 +39,7 @@ export default function App() {
       <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease" }}>
         <Nav />
         <main className="pt-16">
-          <Hero />
+          <Hero show={loaded} />
           <LilyDivider variant="a" />
           <About />
           <LilyDivider variant="b" />
